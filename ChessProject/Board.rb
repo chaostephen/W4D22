@@ -32,7 +32,14 @@ class Board
 
     def checkmate?(color)
         return false unless in_check?(color)
-        pieces.select {|p| }
+        pieces.select {|p|p.color ==color }.all? do |piece|
+            piece.valid_moves.empty?
+        end
+    end
+    def add_piece(piece,pos)
+        raise "position not empty" unless empty?(pos)
+        self[pos]=piece
+    end
 
     def move_piece(start_pos,end_pos)
         rows, cols = end_pos

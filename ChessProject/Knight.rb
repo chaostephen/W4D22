@@ -1,4 +1,4 @@
-include "Slideable"
+include "Steppable"
 require_relative "Piece"
 class Knight < Piece
     attr_reader :color, :board, :pos
