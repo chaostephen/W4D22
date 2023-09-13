@@ -11,10 +11,15 @@ module Steppable
     def moves
         all_moves = []
         row, col = self.pos
-            if Knight
+            if self.class == 'Knight'
                 self.KNIGHT_DIRS.each |dir|
                 cur_x, cur_y =row + dir[0], col + dir[1]
-                all_moves << valid_move?([cur_x],[cur_y])
+                all_moves << [cur_x,cur_y] if valid_pos(cur_x,cur_y) == true
+            else
+                self.KING_DIRS.each |dir|
+                cur_x, cur_y = row + dir[0], col + dir[1]
+                all_moves << board.valid_pos([cur_x,cur_y])
+                if ([cur_x,cur_y])
             end
             end
         
