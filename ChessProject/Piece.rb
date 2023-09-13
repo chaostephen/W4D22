@@ -2,9 +2,9 @@ require_relative "Board"
 
 class Piece
     attr_reader :pos
-    def initialize(board,color,pos)
+    def initialize(board,symbol,pos)
         @board=board
-        @color=color
+        @color=symbol
         @pos=pos
     end
     def moves
@@ -13,12 +13,15 @@ class Piece
     end
  
     def empty?
+        false
     end
     def valid_moves
+        moves.reject{|end_pos|moves_into_check?(end_pos)}
     end
     def pos=(val)
     end
-    def Symbol
+    def symbol
+        raise NotImplementedError
     end
 
     def inspect
@@ -31,43 +34,9 @@ class Piece
 
     private
     def move_into_check?(end_pos)
+        test_board=board.dup
+        test_board.move_piece!(pos,end_pos)
+        test_board.in_check?(color)
     end
     
-end
-
-class Pawn < Piece
-    def symbol
-
-    end
-
-    def moves
-
-    end
-
-    private
-    def at_start_row?
-        if row == 1 or row == 6
-            return true
-        end
-        false
-    end
-    def forward_dir
-        row,col = self.pos
-        if pos[row+1][col]==nil
-            return 1
-        else
-            return -1
-        end
-        
-    end
-    def forward_steps
-    end
-    def side_attacks
-        row,col=self.pos
-        if pos[row+1][col+1]!= nil
-            return 1
-        else
-            return -1
-        end
-    end
 end

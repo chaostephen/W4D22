@@ -30,6 +30,10 @@ class Board
         @grid[row][col]=val
     end
 
+    def checkmate?(color)
+        return false unless in_check?(color)
+        pieces.select {|p| }
+
     def move_piece(start_pos,end_pos)
         rows, cols = end_pos
         return false if rows > 7 || rows < 0 || cols > 7 || cols < 0
