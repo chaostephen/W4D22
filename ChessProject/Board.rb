@@ -14,10 +14,9 @@ class Board
 
     def move_piece(start_pos,end_pos)
         rows, cols = end_pos
-        raise "out of bounds" if rows > 7 || rows < 0 || cols > 7 || cols < 0
+        return false if rows > 7 || rows < 0 || cols > 7 || cols < 0
          row, col = start_pos
-        raise "out of bounds" if row > 7 || row < 0 || col > 7 || col < 0
+        return false if row > 7 || row < 0 || col > 7 || col < 0
     end
    
-    
 end
