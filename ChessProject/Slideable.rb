@@ -11,8 +11,10 @@ module Slideable
     ].freeze
     end
     def moves
-
         all_moves=[]
+            if Piece.pos.valid_moves?(null_piece) && valid_moves
+                all_moves << Piece.pos
+            end
 
     end
     private

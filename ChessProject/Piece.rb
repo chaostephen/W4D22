@@ -7,8 +7,11 @@ class Piece
         @color=color
         @pos=pos
     end
-    def to_s
+    def moves
+        move = []
+            
     end
+ 
     def empty?
     end
     def valid_moves
@@ -17,6 +20,15 @@ class Piece
     end
     def Symbol
     end
+
+    def inspect
+        'P'
+    end
+
+    def to_s
+        "Px"
+    end 
+
     private
     def move_into_check?(end_pos)
     end
