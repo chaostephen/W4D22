@@ -12,10 +12,13 @@ module Slideable
     end
     def moves
         all_moves=[]
-            if Piece.pos.valid_moves?(null_piece) && valid_moves
-                all_moves << Piece.pos
+            # if Piece.pos.valid_moves?(null_piece) && valid_moves
+            #     all_moves << Piece.pos
+            # end
+            self.move_dirs.each do |dir|
+            all_moves << grow_unblocked_moves_in_dir(dir[0],dir[1])
             end
-
+        all_moves
     end
     private
     def move_dirs
@@ -23,7 +26,12 @@ module Slideable
 
     end
     def grow_unblocked_moves_in_dir(dx,dy)
-        
+        # if the board is not nil, move the piece to that position
+        if moves.each do |move|
+            move
+            # move to the opposite color piece
+        end
+        end
     end
     
 
